@@ -1,0 +1,5 @@
+<%= @subcategory.name %>
+
+<% @subcategory.postings.each do |posting| %>
+  <%= link_to posting.title, state_city_category_subcategory_posting_path(@subcategory.state, @subcategory.city, @subcategory.category, posting) %>
+  <% end %>

@@ -1,0 +1,5 @@
+<%= @city.name %>
+<% @city.categories.each do |category| %>
+  <%= link_to category.name, state_city_category_path(@city.state, @city, category) %>
+  <% end %>
+
