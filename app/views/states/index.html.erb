@@ -1,0 +1,8 @@
+<% @states.each do |state| %>
+  <%= state.name %>
+  <% state.cities.each do |city| %>
+
+    <%= link_to city.name, state_city_path(state, city) %>
+  <% end %>
+  <br>
+<% end %>

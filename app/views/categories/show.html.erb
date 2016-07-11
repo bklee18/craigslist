@@ -1,0 +1,5 @@
+<%= @category.name %>
+<% @category.subcategories.each do |subcat| %>
+    <%= link_to subcat.name, state_city_category_subcategory_path(@state, @category.city, @category, subcat) %>
+  <% end %>
+  <br>

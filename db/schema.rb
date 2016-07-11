@@ -11,26 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711173858) do
+ActiveRecord::Schema.define(version: 20160711184852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.integer  "location_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "categories", ["location_id"], name: "index_categories_on_location_id", using: :btree
-
-  create_table "locations", force: :cascade do |t|
-    t.string   "city",       null: false
-    t.string   "state",      null: false
+    t.string   "name",       null: false
+    t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "categories", ["city_id"], name: "index_categories_on_city_id", using: :btree
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "state_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
 
   create_table "postings", force: :cascade do |t|
     t.string   "title",          null: false
@@ -43,6 +45,12 @@ ActiveRecord::Schema.define(version: 20160711173858) do
   end
 
   add_index "postings", ["subcategory_id"], name: "index_postings_on_subcategory_id", using: :btree
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "subcategories", force: :cascade do |t|
     t.string   "name",        null: false
