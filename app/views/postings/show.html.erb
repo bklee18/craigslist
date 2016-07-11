@@ -1,3 +1,7 @@
 <h2>Title: <%= @posting.title %></h2><br>
 
 <p>Description: <%= @posting.description %></p>
+
+<% if flash[:notice] %>
+  <div class="notice"><a href=<%=state_city_category_subcategory_posting_url(@state, @city, @category, @subcategory, @posting)+"/edit/?key=" + flash[:notice]%>%><%=state_city_category_subcategory_posting_url(@state, @city, @category, @subcategory, @posting)+"/edit/?key=" + flash[:notice]%></a></div>
+  <% end %>
