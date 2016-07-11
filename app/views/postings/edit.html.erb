@@ -1,0 +1,33 @@
+<%= form_for([@state, @city, @category, @subcategory, @posting]) do |f| %>
+
+  <% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, :value => @posting.title %>
+  </p>
+
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description, :value => @posting.description%>
+  </p>
+
+  <p>
+    <%= f.label :email %> <br>
+    <%= f.email_field :email, :value => @posting.email %>
+  </p>
+
+  <p>
+    <%= f.submit value:"Edit Post" %>
+  </p>
+
+<% end %>
+
+<%= link_to 'DESTROYYYYY', state_city_category_subcategory_posting_path(@state, @city, @category, @subcategory, @posting)+"/delete/?key=" + @posting.edit_key, method: :delete, data: { confirm: 'Are you sure you want to DESTROYYYYYY this posting?' }  %>
